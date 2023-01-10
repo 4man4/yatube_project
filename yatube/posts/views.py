@@ -1,10 +1,15 @@
-from django.shortcuts import render
 from django.http import HttpResponse
+from django.shortcuts import render
+import os
 
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Главная страница
-def index(request):    
-    return HttpResponse('<html><body><h1>YAtube main page</h1></body></html>')
+def index(request):
+    template = os.path.join(BASE_DIR, 'templates', 'posts', 'index.html')
+    # template = 'posts\index.html'
+    return render(request, template)
 
 
 # Посты, отфильтрованные по группам
